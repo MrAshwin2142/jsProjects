@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-btn"><a href="/">Home</a></div>
+        <div class="nav-btn"><a href="">Portfolio</a></div>
+    </nav>
+    <div class="prjBody">
+        <form class="prj-form">
+            <h1>TRY YOUR LUCK</h1>
+            <p>
+            <h2 class="prjSubHeading">Guess the number between 1 and 100</h2>
+            <input type="text" id="num" placeholder="Enter your number" />
+            </p>
+            <button class="prj2-btn">Check</button>
+            <h2 id="lowHigh"></h2>
+            <p>Priviour Guess </p>
+            <p id="prvs-num"></p>
+            <p>Remaining guess : <span id="rem">10</span> </p>
+        </form>
+    </div>
+    <script>
+        let guessNum = Math.floor(Math.random() * 100);
+        const btn = document.querySelector('.prj2-btn');
+        const lowHigh = document.querySelector('#lowHigh');
+        let prvsNum = document.querySelector('#prvs-num');
+        const msg = document.querySelector('.prjSubHeading');
+        const rem = document.querySelector('#rem');
+        let remguess = 0;
+
+        function newGame() {
+            guessNum = Math.floor(Math.random() * 100);
+            prvsNum.innerHTML = '';
+            rem.innerHTML = '10'
+            remguess = 0;
+        }
+
+        function check(num) {
+
+            remguess++;
+            prvsNum.innerHTML += num + "  ";
+            rem.innerHTML = `${10 - remguess}`
+            if (num > guessNum) {
+                lowHigh.innerHTML = 'Your Number in too high';
+            } else if (num < guessNum) {
+                lowHigh.innerHTML = 'Your Number in too low';
+            } else {
+                lowHigh.innerHTML = ' WOW you gues right Number..';
+                btn.innerHTML = 'new game';
+                newGame();
+            }
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // console.log(guessNum)
+            let inputNum = parseInt(document.querySelector('#num').value);
+            if (inputNum > 100 || inputNum < 0 || isNaN(inputNum)) {
+                lowHigh.innerHTML = 'Please Enter valid number'
+            } else if (remguess >= 10) {
+                btn.innerHTML = 'new game';
+                lowHigh.innerHTML = `The Number is ${guessNum} better luck next time`;
+                newGame();
+            } else {
+                btn.innerHTML = 'Check';
+                check(inputNum);
+            }
+            
+        })
+
+    </script>
+
+</body>
+
+</html>
