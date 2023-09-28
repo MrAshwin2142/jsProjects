@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changar</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-btn"><a href="/">Home</a></div>
+        <div class="nav-btn"><a href="">Portfolio</a></div>
+    </nav>
+
+    <div id="prj1Body" class="prj1-container">
+        <p class="prj1-description">Click on start to chang background color every second</p>
+        <div class="prj1-btns">
+            <h2 id="start" class="prj1-btn">start</h2>
+            <h2 id="stop" class="prj1-btn">stop</h2>
+        </div>
+    </div>
+    
+    <script>
+        const start = document.getElementById('start');
+        const stop = document.getElementById('stop');
+        const prj1Body = document.querySelector('#prj1Body')
+        const hex = "0123456789ABCDEF"
+        let startId ="";
+        start.addEventListener('click', () => {
+            if(!startId)
+           startId = setInterval(() => {
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += hex[Math.floor(Math.random() * 16)]
+                } 
+                prj1Body.style.backgroundColor = color;
+            }, 1000);
+        })
+
+        stop.addEventListener('click',()=>{
+            if(startId){
+                clearInterval(startId);
+                startId="";
+            }
+            
+        })
+    </script>
+</body>
+
+</html>

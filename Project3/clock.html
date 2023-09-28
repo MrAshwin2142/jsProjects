@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-btn"><a href="/">Home</a></div>
+        <div class="nav-btn"><a href="">Portfolio</a></div>
+    </nav>
+    <div id="prj3Body">
+        <h1>Your LocalTime</h1>
+        <div id="clock">
+            12:00:00 PM
+        </div>
+    </div>
+    <script>
+        const clock = document.querySelector('#clock');
+        setInterval(() => {
+            let date = new Date();
+            let time = date.toLocaleTimeString();
+            clock.innerHTML=`${time}`
+        }, 1000);
+    </script>
+    
+</body>
+</html>
