@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>QR Generator</title>
 </head>
+
 <body>
-    <div class="main">
-        <div>
-           <input type="text" id="inputText"> 
-           <button onclick=generatQR()> Generator QR </button>
-           <div>
-            <img src="" id="qrImg">
-           </div>
+
+    <nav class="navbar">
+        <div class="nav-btn"><a href="/">Home</a></div>
+        <div class="nav-btn"><a href="https://ashwin-portfolioo.netlify.app/" target="_blank">Portfolio</a></div>
+    </nav>
+
+
+    <div class="main-containter">
+        <div class="main">
+            <input type="text" id="inputText">
+            <div>
+                <img src="" id="qrImg">
+            </div>
+            <button onclick=generatQR() class=".prj1-btn"> Generator QR </button>
         </div>
     </div>
     <script>
-        const inputText=document.getElementById("inputText")
-        const qrImg=document.getElementById("qrImg")
-        function generatQR(e){
-            qrImg.scr="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + inputText.value;
-            console.log(qrImg)
+        async function generatQR(e) {
+            const inputText = document.getElementById("inputText")
+            const src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + inputText.value;
+             document.getElementById("qrImg").src= await src;
+            // console.log(document.getElementById("qrImg").src=src)
         }
     </script>
 </body>
+
 </html>

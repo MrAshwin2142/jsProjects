@@ -29,6 +29,7 @@ body{
     height: 90vh;
     display: flex;
     justify-content: center;
+    
     align-items: center;
 }
 ul{
@@ -98,7 +99,7 @@ ul{
 }.prj-form h1{
     margin: 20px;
 }
-.prj-form  input{
+input{
     width: 280px;
     margin: 5px;
     font-size: 1.2rem;
@@ -120,6 +121,24 @@ ul{
     width: 280px;
     margin-bottom: 20px;
     text-align: center;
+}
+.main{
+    width: 500px;
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: 2s;
+    /* font-size: 500px; */
+}
+.main button{
+    width: 200px;
+    margin: 20px;
+}
+#qrImg{
+    transition: 2s;
 }
 :root{
     --textColor : black;
